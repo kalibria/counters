@@ -1,11 +1,10 @@
 .App {
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 100vh;
-  font-size: 25px;
-
+  gap: 70px
 }
 
 .counter {
@@ -65,4 +64,47 @@
 .progress {
   width: 350px;
   height: 45px;
+}
+
+.wrapper {
+  width: 900px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.boxCounter {
+  width: 400px;
+  height: 400px;
+  border: 6px solid #03a9f482;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.elWrapper {
+  width: 350px;
+  min-height: 170px;
+  border-radius: 15px;
+  border: 6px solid #03a9f482;
+  font-size: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.form {
+  font-size: 30px;
+  color: #03a9f4;
+  font-weight: bold;
+}
+
+.input {
+  height: 30px;
+  font-size: 18px;
+  width: 130px;
+  margin-left: 20px;
 }
