@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 import {Counter} from "./components/Counter";
 import {ProgressCounter} from "./components/ProgressCounter";
-import {BoxCounter1} from "./components/BoxCounter1";
-import {BoxCounter2} from "./components/BoxCounter2";
+import {CounterWithSettings} from "./components/CounterWithSettings";
+
 
 function App() {
   return (
@@ -12,13 +12,7 @@ function App() {
               <Counter/>
               <ProgressCounter/>
           </div>
-
-          <div className={'wrapper'}>
-              <BoxCounter1/>
-              <BoxCounter2/>
-          </div>
-
-
+          <CounterWithSettings/>
       </div>
   );
 }

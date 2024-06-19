@@ -1,13 +1,17 @@
+
+
 type InputProps = {
     name: string
-    value: number
+    defaultValue: number
+    id: string
 }
 
-export const Input = ({name, value}: InputProps) => {
+export const Input = ({name, defaultValue, id}: InputProps) => {
+
     return (
-        <form className={'form'}>
+        <div className={'form'}>
             <label htmlFor={name}>{name}: </label>
-            <input id={name} type={'number'} value={value} className={'input'}/>
-        </form>
+            <input id={id} type={'number'} name={id} defaultValue={defaultValue} className={'input'}/>
+        </div>
     )
 }
