@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  gap: 70px
+  gap: 70px;
 }
 
 .counter {
@@ -94,6 +94,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .form {
@@ -109,4 +110,14 @@
   margin-left: 20px;
   vertical-align: center;
   text-align: center;
+}
+
+.inputError {
+  outline: 3px solid red;
+  color: red;
+}
+
+.textError {
+  color: black;
+  font-size: 30px;
 }
