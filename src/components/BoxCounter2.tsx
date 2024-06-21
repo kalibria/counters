@@ -8,9 +8,10 @@ type BoxCounter2Props = {
     maxValue: number
     errorMaxV: boolean
     errorStartV: boolean
+    textError: string
 }
 
-export const BoxCounter2 = ({startValue, maxValue, errorStartV, errorMaxV}: BoxCounter2Props) => {
+export const BoxCounter2 = ({startValue, maxValue, errorStartV, errorMaxV, textError}: BoxCounter2Props) => {
 
     const [state, setState] = useState(startValue);
 
@@ -27,16 +28,24 @@ export const BoxCounter2 = ({startValue, maxValue, errorStartV, errorMaxV}: BoxC
         setState(startValue)
     }
 
+    const isDisable = () => {
+        if(state === maxValue || textError){
+            return true
+        }else{
+            return false
+        }
+    }
+
     return (
         <BoxCounter>
             <ElWrapper>
-                {errorStartV || errorMaxV ? <div className={'textError'}>enter values and press 'set'</div> :
+                {textError ? <div className={'textError'}>{textError}</div> :
                     <div className={state === maxValue ? 'finish' : ''}>{state}</div>
                 }
             </ElWrapper>
             <ElWrapper flexDirection={'row'}>
-                <Button name={'inc'} handleClick={increment} color={'#03a9f482'} isDisabled={state === maxValue}/>
-                <Button name={'reset'} handleClick={reset} color={'#03a9f482'}/>
+                <Button name={'inc'} handleClick={increment} color={'#03a9f482'} isDisabled={isDisable()}/>
+                <Button name={'reset'} handleClick={reset} color={'#03a9f482'} isDisabled={Boolean(textError)}/>
             </ElWrapper>
 
         </BoxCounter>

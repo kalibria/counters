@@ -2,7 +2,7 @@ import {BoxCounter} from "./BoxCounter";
 import {ElWrapper} from "./ElWrapper";
 import {Input} from "./Input";
 import {Button} from "./Button";
-import {Dispatch, FormEvent, SetStateAction} from "react";
+import {Dispatch, FormEvent, SetStateAction, useEffect} from "react";
 
 type BoxCounter1Props = {
     startValue: number
@@ -13,6 +13,8 @@ type BoxCounter1Props = {
     errorStartV: boolean
     setErrorMaxV: Dispatch<SetStateAction<boolean>>
     setErrorStartV: Dispatch<SetStateAction<boolean>>
+    setTextError: Dispatch<SetStateAction<string>>
+
 }
 
 export const BoxCounter1 = ({
@@ -23,7 +25,8 @@ export const BoxCounter1 = ({
                                 setErrorStartV,
                                 errorStartV,
                                 setErrorMaxV,
-                                errorMaxV
+                                errorMaxV,
+                                setTextError,
                             }: BoxCounter1Props) => {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -37,12 +40,36 @@ export const BoxCounter1 = ({
     }
 
     const checkMaxValue = (e: FormEvent<HTMLInputElement>) => {
-        +e.currentTarget.value < 0 ? setErrorMaxV(true) : setErrorMaxV(false)
+        if(+e.currentTarget.value < 0){
+            setErrorMaxV(true);
+            setTextError('enter values and press `set`')
+        }else{
+            setErrorMaxV(false);
+            setTextError('')
+        }
     }
 
     const checkStartValue = (e: FormEvent<HTMLInputElement>) => {
-        +e.currentTarget.value < 0 ? setErrorStartV(true) : setErrorStartV(false)
+        if(+e.currentTarget.value < 0 ){
+            setErrorStartV(true);
+            setTextError('enter values and press `set`')
+        }else {
+            setErrorStartV(false);
+            setTextError('')
+        }
     }
+
+    useEffect(() => {
+        if (maxValue < startValue || maxValue === startValue) {
+            setErrorStartV(true);
+            setErrorMaxV(true);
+            setTextError('Incorrect value!')
+        } else {
+            setErrorStartV(false);
+            setErrorMaxV(false);
+            setTextError('')
+        }
+    }, [startValue, maxValue, setErrorStartV, setErrorMaxV, setTextError]);
 
     return (
         <BoxCounter>

@@ -103,6 +103,10 @@
   font-weight: bold;
 }
 
+.form .elWrapper:first-of-type {
+  margin-bottom: 10px;
+}
+
 .input {
   height: 30px;
   font-size: 18px;
@@ -118,6 +122,6 @@
 }
 
 .textError {
-  color: black;
+  color: red;
   font-size: 30px;
 }
