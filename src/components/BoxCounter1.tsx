@@ -14,7 +14,7 @@ type BoxCounter1Props = {
     setErrorMaxV: Dispatch<SetStateAction<boolean>>
     setErrorStartV: Dispatch<SetStateAction<boolean>>
     setTextError: Dispatch<SetStateAction<string>>
-
+    textError: string
 }
 
 export const BoxCounter1 = ({
@@ -27,6 +27,7 @@ export const BoxCounter1 = ({
                                 setErrorMaxV,
                                 errorMaxV,
                                 setTextError,
+                                textError
                             }: BoxCounter1Props) => {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -37,23 +38,26 @@ export const BoxCounter1 = ({
         const formJson = Object.fromEntries(formData.entries());
         setMaxValue(+formJson.maxValue);
         setStartValue(+formJson.startValue);
+
+        localStorage.setItem("maxValue", String(formJson.maxValue));
+        localStorage.setItem("startValue", String(formJson.startValue))
     }
 
     const checkMaxValue = (e: FormEvent<HTMLInputElement>) => {
-        if(+e.currentTarget.value < 0){
+        if (+e.currentTarget.value < 0) {
             setErrorMaxV(true);
             setTextError('enter values and press `set`')
-        }else{
+        } else {
             setErrorMaxV(false);
             setTextError('')
         }
     }
 
     const checkStartValue = (e: FormEvent<HTMLInputElement>) => {
-        if(+e.currentTarget.value < 0 ){
+        if (+e.currentTarget.value < 0) {
             setErrorStartV(true);
             setTextError('enter values and press `set`')
-        }else {
+        } else {
             setErrorStartV(false);
             setTextError('')
         }
@@ -81,7 +85,7 @@ export const BoxCounter1 = ({
                            onInputHandler={checkStartValue} error={errorStartV}/>
                 </ElWrapper>
                 <ElWrapper>
-                    <Button name={'set'} color={'#03a9f482'} type={'submit'}/>
+                    <Button name={'set'} color={'#03a9f482'} type={'submit'} isDisabled={!!textError}/>
                 </ElWrapper>
             </form>
         </BoxCounter>
