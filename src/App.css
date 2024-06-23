@@ -103,8 +103,8 @@
   font-weight: bold;
 }
 
-.form .elWrapper:first-of-type {
-  margin-bottom: 10px;
+form .elWrapper:first-of-type {
+  margin-bottom: 20px;
 }
 
 .input {

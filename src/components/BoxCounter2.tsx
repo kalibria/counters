@@ -6,12 +6,10 @@ import {Button} from "./Button";
 type BoxCounter2Props = {
     startValue: number
     maxValue: number
-    errorMaxV: boolean
-    errorStartV: boolean
     textError: string
 }
 
-export const BoxCounter2 = ({startValue, maxValue, errorStartV, errorMaxV, textError}: BoxCounter2Props) => {
+export const BoxCounter2 = ({startValue, maxValue, textError}: BoxCounter2Props) => {
 
     const [state, setState] = useState(startValue);
 
