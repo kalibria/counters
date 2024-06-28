@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import {Scoreboard} from "./Scoreboard";
-import {ButtonsArea} from "./ButtonsArea";
+import {Scoreboard} from "../additionalEllements/Scoreboard";
+import {ButtonsArea} from "../button/ButtonsArea";
+
 
 export const Counter = () => {
     const [count, setCount] = useState(0);

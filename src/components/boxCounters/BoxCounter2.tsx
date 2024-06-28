@@ -1,15 +1,18 @@
-import {useEffect, useState} from "react";
+import {ReactNode, useEffect, useState} from "react";
 import {BoxCounter} from "./BoxCounter";
-import {ElWrapper} from "./ElWrapper";
-import {Button} from "./Button";
+import {ElWrapper} from "../additionalEllements/ElWrapper";
+import {Button} from "../button/Button";
+
+
 
 type BoxCounter2Props = {
     startValue: number
     maxValue: number
     textError: string
+    children?:ReactNode
 }
 
-export const BoxCounter2 = ({startValue, maxValue, textError}: BoxCounter2Props) => {
+export const BoxCounter2 = ({startValue, maxValue, textError, children}: BoxCounter2Props) => {
 
     const [state, setState] = useState(startValue);
 
@@ -44,6 +47,7 @@ export const BoxCounter2 = ({startValue, maxValue, textError}: BoxCounter2Props)
             <ElWrapper flexDirection={'row'}>
                 <Button name={'inc'} handleClick={increment} color={'#03a9f482'} isDisabled={isDisable()}/>
                 <Button name={'reset'} handleClick={reset} color={'#03a9f482'} isDisabled={Boolean(textError)}/>
+                {children}
             </ElWrapper>
 
         </BoxCounter>

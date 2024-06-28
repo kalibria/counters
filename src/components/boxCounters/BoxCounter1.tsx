@@ -1,8 +1,8 @@
 import {BoxCounter} from "./BoxCounter";
-import {ElWrapper} from "./ElWrapper";
-import {Input} from "./Input";
-import {Button} from "./Button";
-import {Dispatch, FormEvent, SetStateAction, useEffect, useState} from "react";
+import {Dispatch, FormEvent, SetStateAction, useState} from "react";
+import {ElWrapper} from "../additionalEllements/ElWrapper";
+import {Input} from "../additionalEllements/Input";
+import {Button} from "../button/Button";
 
 type BoxCounter1Props = {
     startValue: number
@@ -24,13 +24,7 @@ export const BoxCounter1 = ({
     const [errorMaxV, setErrorMaxV] = useState(false);
     const [errorStartV, setErrorStartV] = useState(false);
 
-    const isDisabled = () => {
-        if(errorMaxV || errorStartV || textError){
-            return true
-        }else {
-            return false
-        }
-    }
+    const isDisabled = errorMaxV || errorStartV || textError ? true : false;
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -91,7 +85,7 @@ export const BoxCounter1 = ({
                            onInputHandler={checkStartValue} error={errorStartV} onBlurHandle={(e) => setStartValue(+e.currentTarget.value)}/>
                 </ElWrapper>
                 <ElWrapper>
-                    <Button name={'set'} color={'#03a9f482'} type={'submit'} isDisabled={isDisabled()}/>
+                    <Button name={'set'} color={'#03a9f482'} type={'submit'} isDisabled={isDisabled}/>
                 </ElWrapper>
             </form>
         </BoxCounter>

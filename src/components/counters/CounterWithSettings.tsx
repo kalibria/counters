@@ -1,6 +1,7 @@
-import {BoxCounter1} from "./BoxCounter1";
-import {BoxCounter2} from "./BoxCounter2";
 import React, {useState} from "react";
+import {BoxCounter1} from "../boxCounters/BoxCounter1";
+import {BoxCounter2} from "../boxCounters/BoxCounter2";
+
 
 
 

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {Button} from "./Button";
+import {Button} from "../button/Button";
+
 
 export const ProgressCounter = () => {
     const minValue = 0;

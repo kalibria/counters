@@ -95,6 +95,7 @@
   justify-content: space-around;
   align-items: center;
   box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 .form {

@@ -1,8 +1,10 @@
 import React from 'react';
 import './App.css';
-import {Counter} from "./components/Counter";
-import {ProgressCounter} from "./components/ProgressCounter";
-import {CounterWithSettings} from "./components/CounterWithSettings";
+import {Counter} from "./components/counters/Counter";
+import {ProgressCounter} from "./components/counters/ProgressCounter";
+import {CounterWithSettings} from "./components/counters/CounterWithSettings";
+import {CounterWithSettings2} from "./components/counters/CounterWithSettings2";
+
 
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
               <ProgressCounter/>
           </div>
           <CounterWithSettings/>
+          <CounterWithSettings2/>
       </div>
   );
 }
