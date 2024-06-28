@@ -9,8 +9,9 @@ type BoxCounter1Props = {
     maxValue: number
     setStartValue: Dispatch<SetStateAction<number>>
     setMaxValue: Dispatch<SetStateAction<number>>
-    setTextError: Dispatch<SetStateAction<string>>
-    textError: string
+    setTextError?: Dispatch<SetStateAction<string>>
+    textError?: string
+    onClickHandle?: () => void
 }
 
 export const BoxCounter1 = ({
@@ -19,7 +20,8 @@ export const BoxCounter1 = ({
                                 setStartValue,
                                 setMaxValue,
                                 setTextError,
-                                textError
+                                textError,
+                                onClickHandle
                             }: BoxCounter1Props) => {
     const [errorMaxV, setErrorMaxV] = useState(false);
     const [errorStartV, setErrorStartV] = useState(false);
@@ -37,40 +39,59 @@ export const BoxCounter1 = ({
 
         const isValid = +formJson.maxValue > +formJson.startValue && +formJson.maxValue !== +formJson.startValue && +formJson.maxValue > 0 && +formJson.startValue >= 0;
 
-        if(isValid){
-            localStorage.setItem("maxValue", String(formJson.maxValue));
-            localStorage.setItem("startValue", String(formJson.startValue))
-        }
+       if (isValid && onClickHandle){
+            localStorage.setItem("maxValue2", String(formJson.maxValue));
+            localStorage.setItem("startValue2", String(formJson.startValue));
+            onClickHandle();
+        }else if (isValid) {
+           localStorage.setItem("maxValue", String(formJson.maxValue));
+           localStorage.setItem("startValue", String(formJson.startValue))
+       }
+
+
     }
 
     const checkMaxValue = (e: FormEvent<HTMLInputElement>) => {
         if (+e.currentTarget.value < 0) {
             setErrorMaxV(true);
-            setTextError('enter values and press `set`')
-        }else if(+e.currentTarget.value === startValue || +e.currentTarget.value < startValue){
+            if (setTextError) {
+                setTextError('enter values and press `set`')
+            }
+
+        } else if (+e.currentTarget.value === startValue || +e.currentTarget.value < startValue) {
             setErrorMaxV(true);
             setErrorStartV(true);
-            setTextError('enter values and press `set`')
+            if (setTextError) {
+                setTextError('enter values and press `set`')
+            }
         } else {
             setErrorMaxV(false);
             setErrorStartV(false);
-            setTextError('')
+            if (setTextError) {
+                setTextError('')
+            }
         }
     }
 
     const checkStartValue = (e: FormEvent<HTMLInputElement>) => {
         if (+e.currentTarget.value < 0) {
             setErrorStartV(true);
-            setTextError('enter values and press `set`')
-        }  else if(+e.currentTarget.value === maxValue || +e.currentTarget.value > maxValue){
+            if (setTextError) {
+                setTextError('enter values and press `set`')
+            }
+
+        } else if (+e.currentTarget.value === maxValue || +e.currentTarget.value > maxValue) {
             setErrorMaxV(true);
             setErrorStartV(true);
-            setTextError('enter values and press `set`')
-        }
-        else {
+            if (setTextError) {
+                setTextError('enter values and press `set`')
+            }
+        } else {
             setErrorStartV(false);
             setErrorMaxV(false);
-            setTextError('')
+            if (setTextError) {
+                setTextError('')
+            }
         }
     }
 
@@ -80,9 +101,11 @@ export const BoxCounter1 = ({
             <form onSubmit={(e) => handleSubmit(e)}>
                 <ElWrapper>
                     <Input name={'max value'} defaultValue={maxValue} id={'maxValue'}
-                           onInputHandler={checkMaxValue} error={errorMaxV} onBlurHandle={(e) =>  setMaxValue(+e.currentTarget.value)}/>
+                           onInputHandler={checkMaxValue} error={errorMaxV}
+                           onBlurHandle={(e) => setMaxValue(+e.currentTarget.value)}/>
                     <Input name={'start value'} defaultValue={startValue} id={'startValue'}
-                           onInputHandler={checkStartValue} error={errorStartV} onBlurHandle={(e) => setStartValue(+e.currentTarget.value)}/>
+                           onInputHandler={checkStartValue} error={errorStartV}
+                           onBlurHandle={(e) => setStartValue(+e.currentTarget.value)}/>
                 </ElWrapper>
                 <ElWrapper>
                     <Button name={'set'} color={'#03a9f482'} type={'submit'} isDisabled={isDisabled}/>

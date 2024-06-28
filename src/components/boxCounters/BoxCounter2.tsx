@@ -8,7 +8,7 @@ import {Button} from "../button/Button";
 type BoxCounter2Props = {
     startValue: number
     maxValue: number
-    textError: string
+    textError?: string
     children?:ReactNode
 }
 
@@ -30,11 +30,7 @@ export const BoxCounter2 = ({startValue, maxValue, textError, children}: BoxCoun
     }
 
     const isDisable = () => {
-        if(state === maxValue || textError){
-            return true
-        }else{
-            return false
-        }
+        return !!(state === maxValue || textError);
     }
 
     return (
