@@ -1,3 +1,5 @@
+import {setStartValueAC, StartValueReducer} from "./startValue-reducer";
+
 let initStartValue: number
 
 beforeEach(()=>{
@@ -5,7 +7,7 @@ beforeEach(()=>{
 })
 
 test("init start value should be changed",()=>{
-    const newValue = StartValueReducer(initStartValue, SetStartValueAC(3))
+    const newValue = StartValueReducer(initStartValue, setStartValueAC(3))
 
     expect(newValue).toBe(3);
     expect(newValue).not.toBe(0)
