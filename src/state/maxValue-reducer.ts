@@ -8,7 +8,7 @@ export type SetMaxValue = {
 export type ActionType =
     | SetMaxValue
 
-let initMaxValue = 5;
+const initMaxValue = 5;
 
 export const MaxValueReducer = (state = initMaxValue, action: ActionType) => {
     switch (action.type) {
