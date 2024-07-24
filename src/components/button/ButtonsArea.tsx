@@ -10,7 +10,7 @@ type ButtonsAreaProps = {
 
 export const ButtonsArea = ({count, setCount, minValue, maxValue}: ButtonsAreaProps) => {
 
-    const increase = () => {
+     const increase = () => {
         if(count < maxValue){
             setCount(count + 1)
         }

@@ -5,6 +5,7 @@
   justify-content: space-around;
   align-items: center;
   gap: 70px;
+  margin-top: 70px;
 }
 
 .counter {

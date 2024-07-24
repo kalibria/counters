@@ -3,7 +3,7 @@ import {Button} from "../button/Button";
 import React, {useState} from "react";
 import {BoxCounter1} from "../boxCounters/BoxCounter1";
 
-export const CounterWithSettings2 = () => {
+export const CounterWithRedux = () => {
     let initStartValue = 0;
     let initMaxValue = 5;
     if (localStorage.getItem("startValue2")) {

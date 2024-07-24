@@ -47,8 +47,6 @@ export const BoxCounter1 = ({
            localStorage.setItem("maxValue", String(formJson.maxValue));
            localStorage.setItem("startValue", String(formJson.startValue))
        }
-
-
     }
 
     const checkMaxValue = (e: FormEvent<HTMLInputElement>) => {
