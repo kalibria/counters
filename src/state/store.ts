@@ -1,15 +1,16 @@
 import {combineReducers, legacy_createStore} from 'redux'
 
-// объединяя reducer-ы с помощью combineReducers,
-// мы задаём структуру нашего единственного объекта-состояния
+import {ErrorReducer} from "./errorReducer";
+import {ValuesReducer} from "./valuesReducer";
+
 const rootReducer = combineReducers({
-    // tasks: tasksReducer,
-    // todoLists: todoListsReducer
+     values: ValuesReducer,
+     errors: ErrorReducer
 })
-// непосредственно создаём store
+
 export const store = legacy_createStore(rootReducer)
-// определить автоматически тип всего объекта состояния
+
 export type AppRootStateType = ReturnType<typeof rootReducer>
-// а это, чтобы можно было в консоли браузера обращаться к store в любой момент
+
 // @ts-ignore
 window.store = store

@@ -23,8 +23,8 @@ export const CounterWithSettings = () => {
 
     return (
         <div className={'wrapper'}>
-            <BoxCounter1 maxValue = {maxValue} startValue = {startValue} setMaxValue={setMaxValue} setStartValue={setStartValue} setTextError={setTextError} textError={textError}/>
-            <BoxCounter2 maxValue = {maxValue} startValue = {startValue} textError={textError}/>
+        {/*    <BoxCounter1 maxValue = {maxValue} startValue = {startValue} setMaxValue={setMaxValue} setStartValue={setStartValue} setTextError={setTextError} textError={textError}/>*/}
+        {/*    <BoxCounter2 maxValue = {maxValue} startValue = {startValue} textError={textError}/>*/}
         </div>
     )
 }

@@ -26,14 +26,14 @@ export const CounterWithSettings2 = () => {
     return (
 
         <div className={'wrapper'} >
-            {isSetClicked ? (
-                    <BoxCounter1 startValue={startValue} maxValue={maxValue} setStartValue={setStartValue}
-                                 setMaxValue={setMaxValue} onClickHandle={closeWindow}/>
-            ) : (
-                <BoxCounter2 startValue={startValue} maxValue={maxValue}>
-                    <Button name={'set'} color={'#03a9f482'} handleClick={onSetClick}/>
-                </BoxCounter2>
-            )}
+            {/*{isSetClicked ? (*/}
+            {/*        <BoxCounter1 startValue={startValue} maxValue={maxValue} setStartValue={setStartValue}*/}
+            {/*                     setMaxValue={setMaxValue} onClickHandle={closeWindow}/>*/}
+            {/*) : (*/}
+            {/*    <BoxCounter2 startValue={startValue} maxValue={maxValue}>*/}
+            {/*        <Button name={'set'} color={'#03a9f482'} handleClick={onSetClick}/>*/}
+            {/*    </BoxCounter2>*/}
+            {/*)}*/}
         </div>
     )
 }
