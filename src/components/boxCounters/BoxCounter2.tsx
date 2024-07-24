@@ -2,7 +2,7 @@ import {ReactNode, useEffect, useState} from "react";
 import {BoxCounter} from "./BoxCounter";
 import {ElWrapper} from "../additionalEllements/ElWrapper";
 import {Button} from "../button/Button";
-import {useDispatch, useSelector} from "react-redux";
+import { useSelector} from "react-redux";
 import {AppRootStateType} from "../../state/store";
 
 
@@ -13,9 +13,9 @@ type BoxCounter2Props = {
 }
 
 export const BoxCounter2 = ({textError, children}: BoxCounter2Props) => {
-    const startValue = useSelector<AppRootStateType, number>(state => state.startValue);
-    const maxValue = useSelector<AppRootStateType, number>(state => state.maxValue);
-    const dispatch = useDispatch();
+    const startValue = useSelector<AppRootStateType, number>(state => state.values.startValue);
+    const maxValue = useSelector<AppRootStateType, number>(state => state.values.maxValue);
+
 
     const [state, setState] = useState(startValue);
 

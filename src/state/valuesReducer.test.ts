@@ -3,12 +3,14 @@ import {setMaxValueAC, setStartValueAC, ValuesReducer} from "./valuesReducer";
 describe("check values",()=>{
     let  initValues = {
         startValue: 0,
-        maxValue: 5
+        maxValue: 5,
+        valuesIsValid: true
     };
     beforeEach(() => {
         initValues = {
             startValue: 0,
-            maxValue: 5
+            maxValue: 5,
+            valuesIsValid: true
         };
     })
 

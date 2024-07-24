@@ -1,27 +1,26 @@
 import {BoxCounter} from "./BoxCounter";
-import {Dispatch, FormEvent, SetStateAction, useState} from "react";
+import {Dispatch, FormEvent, SetStateAction} from "react";
 import {ElWrapper} from "../additionalEllements/ElWrapper";
 import {Input} from "../additionalEllements/Input";
 import {Button} from "../button/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../state/store";
-import {setMaxValueAC} from "../../state/maxValue-reducer";
-import {setStartValueAC} from "../../state/startValue-reducer";
-import {initErrorStateType, setMaxValueErrorAC, setStartValueErrorAC} from "../../state/errorReducer";
+import { setMaxValueErrorAC, setStartValueErrorAC} from "../../state/errorReducer";
+import {checkIsValuesValid, setMaxValueAC, setStartValueAC} from "../../state/valuesReducer";
 
 type BoxCounter1Props = {
-    // setTextError?: Dispatch<SetStateAction<string>>
-    // textError?: string
+    setTextError?: Dispatch<SetStateAction<string>>
+    textError?: string
     onClickHandle?: () => void
 }
 
 export const BoxCounter1 = ({
-                                // setTextError,
-                                // textError,
+                                setTextError,
+                                textError,
                                 onClickHandle
                             }: BoxCounter1Props) => {
-    const startValue = useSelector<AppRootStateType, number>(state => state.startValue);
-    const maxValue = useSelector<AppRootStateType, number>(state => state.maxValue);
+    const startValue = useSelector<AppRootStateType, number>(state => state.values.startValue);
+    const maxValue = useSelector<AppRootStateType, number>(state => state.values.maxValue);
     const dispatch = useDispatch();
     const errorStartV = useSelector<AppRootStateType,string
     >(state => state.errors.startValueError);const errorMaxV = useSelector<AppRootStateType,string>(state => state.errors.maxValueError)
@@ -39,7 +38,9 @@ export const BoxCounter1 = ({
         dispatch(setStartValueAC(+formJson.startValue))
 
 
-        const isValid = +formJson.maxValue > +formJson.startValue && +formJson.maxValue !== +formJson.startValue && +formJson.maxValue > 0 && +formJson.startValue >= 0;
+        // const isValid = +formJson.maxValue > +formJson.startValue && +formJson.maxValue !== +formJson.startValue && +formJson.maxValue > 0 && +formJson.startValue >= 0;
+
+        const isValid = dispatch(checkIsValuesValid(+formJson.startValue, +formJson.maxValue))
 
         if (isValid && onClickHandle) {
             localStorage.setItem("maxValue2", String(formJson.maxValue));
@@ -52,44 +53,44 @@ export const BoxCounter1 = ({
     }
 
     const checkMaxValue = (e: FormEvent<HTMLInputElement>) => {
-        // if (+e.currentTarget.value < 0) {
-        //     dispatch(setMaxValueErrorAC(true))
-        //     if (setTextError) {
-        //         setTextError('enter values and press `set`')
-        //     }
-        //
-        // } else if (+e.currentTarget.value === startValue || +e.currentTarget.value < startValue) {
-        //     dispatch(setMaxValueErrorAC(true))
-        //     dispatch(setStartValueErrorAC(true))
-        //
-        //     if (setTextError) {
-        //         setTextError('enter values and press `set`')
-        //     }
-        // } else {
-        //     dispatch(setMaxValueErrorAC(false));
-        //     dispatch(setStartValueErrorAC(false))
-        //     if (setTextError) {
-        //         setTextError('')
-        //     }
-        // }
+        if (+e.currentTarget.value < 0) {
+            dispatch(setMaxValueErrorAC('enter values and press `set`'))
+            if (setTextError) {
+                setTextError('enter values and press `set`')
+            }
+
+        } else if (+e.currentTarget.value === startValue || +e.currentTarget.value < startValue) {
+            dispatch(setMaxValueErrorAC('enter values and press `set`'))
+            dispatch(setStartValueErrorAC('enter values and press `set`'))
+
+            if (setTextError) {
+                setTextError('enter values and press `set`')
+            }
+        } else {
+            dispatch(setMaxValueErrorAC(''));
+            dispatch(setStartValueErrorAC(''))
+            if (setTextError) {
+                setTextError('')
+            }
+        }
     }
 
     const checkStartValue = (e: FormEvent<HTMLInputElement>) => {
         if (+e.currentTarget.value < 0) {
-            dispatch(setStartValueErrorAC(true))
+            dispatch(setStartValueErrorAC('enter values and press `set`'))
             if (setTextError) {
                 setTextError('enter values and press `set`')
             }
 
         } else if (+e.currentTarget.value === maxValue || +e.currentTarget.value > maxValue) {
-            dispatch(setMaxValueErrorAC(true));
-            dispatch(setStartValueErrorAC(true))
+            dispatch(setMaxValueErrorAC('enter values and press `set`'));
+            dispatch(setStartValueErrorAC('enter values and press `set`'))
             if (setTextError) {
                 setTextError('enter values and press `set`')
             }
         } else {
-            dispatch(setMaxValueErrorAC(false));
-            dispatch(setStartValueErrorAC(false))
+            dispatch(setMaxValueErrorAC(""));
+            dispatch(setStartValueErrorAC(""))
             if (setTextError) {
                 setTextError('')
             }

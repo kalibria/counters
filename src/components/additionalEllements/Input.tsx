@@ -6,7 +6,7 @@ type InputProps = {
     defaultValue: number
     id: string
     onInputHandler: (e: FormEvent<HTMLInputElement>) => void
-    error?: boolean
+    error?: string
     onBlurHandle: (e: FormEvent<HTMLInputElement>) => void
 }
 
