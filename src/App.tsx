@@ -5,22 +5,25 @@ import {ProgressCounter} from "./components/counters/ProgressCounter";
 import {CounterWithSettings} from "./components/counters/CounterWithSettings";
 import {CounterWithSettings2} from "./components/counters/CounterWithSettings2";
 import {CounterWithRedux} from "./components/counters/CounterWithRedux";
+import {Provider} from "react-redux";
+import {store} from "./state/store";
 
 
 function App() {
     return (
-        <div className="App">
-            {/*<div className={'wrapper'}>*/}
-            {/*    <Counter/>*/}
-            {/*    <ProgressCounter/>*/}
-            {/*</div>*/}
-            {/*<CounterWithSettings/>*/}
-            {/*<CounterWithSettings2/>*/}
+        <Provider store={store}>
+            <div className="App">
+                {/*<div className={'wrapper'}>*/}
+                {/*    <Counter/>*/}
+                {/*    <ProgressCounter/>*/}
+                {/*</div>*/}
+                {/*<CounterWithSettings/>*/}
+                {/*<CounterWithSettings2/>*/}
 
-            <CounterWithRedux/>
+                <CounterWithRedux/>
 
-
-        </div>
+            </div>
+        </Provider>
     );
 }
 
