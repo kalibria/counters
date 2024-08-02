@@ -13,6 +13,7 @@ import {
     setStartValueAC,
     setStartValueErrorAC
 } from "../../store/actions";
+import {selectErrorMaxV, selectErrorStartV, selectMaxValue, selectStartValue} from "../../store/selectors";
 
 
 type BoxCounter1Props = {
@@ -26,13 +27,13 @@ export const BoxCounter1 = ({
                                 textError,
                                 onClickHandle
                             }: BoxCounter1Props) => {
-    const startValue = useSelector<AppRootStateType, number>(state => state.values.startValue);
-    const maxValue = useSelector<AppRootStateType, number>(state => state.values.maxValue);
-    const dispatch = useDispatch();
-    const errorStartV = useSelector<AppRootStateType,string
-    >(state => state.errors.startValueError);
-    const errorMaxV = useSelector<AppRootStateType,string>(state => state.errors.maxValueError)
+    const startValue = useSelector(selectStartValue);
+    const maxValue = useSelector(selectMaxValue);
 
+    const dispatch = useDispatch();
+
+    const errorStartV = useSelector(selectErrorStartV);
+    const errorMaxV = useSelector(selectErrorMaxV);
 
     const isDisabled = !!(errorMaxV || errorStartV || textError);
 
