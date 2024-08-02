@@ -1,4 +1,6 @@
-import {ErrorReducer, setMaxValueErrorAC, setStartValueErrorAC} from "./errorReducer";
+import {errorReducer} from "./error";
+import {setMaxValueErrorAC, setStartValueErrorAC} from "../actions";
+
 
 let initErrors = {
     startValueError: "",
@@ -14,14 +16,14 @@ beforeEach(() => {
 })
 
 test("max value error should be set",()=>{
-    const error = ErrorReducer(initErrors,setMaxValueErrorAC("error"))
+    const error = errorReducer(initErrors,setMaxValueErrorAC("error"))
 
     expect(error.maxValueError).toBe('error');
     expect(error.startValueError).toBe(false)
 })
 
 test("start value error should be set",()=>{
-    const error = ErrorReducer(initErrors,setStartValueErrorAC('error'))
+    const error = errorReducer(initErrors,setStartValueErrorAC('error'))
 
     expect(error.startValueError).toBe('error');
     expect(error.maxValueError).toBe(false)

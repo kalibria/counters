@@ -4,9 +4,16 @@ import {ElWrapper} from "../additionalEllements/ElWrapper";
 import {Input} from "../additionalEllements/Input";
 import {Button} from "../button/Button";
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../../state/store";
-import { setMaxValueErrorAC, setStartValueErrorAC} from "../../state/errorReducer";
-import {checkIsValuesValid, setMaxValueAC, setStartValueAC} from "../../state/valuesReducer";
+import {AppRootStateType} from "../../store/store";
+
+import {
+    checkIsValuesValid,
+    setMaxValueAC,
+    setMaxValueErrorAC,
+    setStartValueAC,
+    setStartValueErrorAC
+} from "../../store/actions";
+
 
 type BoxCounter1Props = {
     setTextError?: Dispatch<SetStateAction<string>>
@@ -23,7 +30,8 @@ export const BoxCounter1 = ({
     const maxValue = useSelector<AppRootStateType, number>(state => state.values.maxValue);
     const dispatch = useDispatch();
     const errorStartV = useSelector<AppRootStateType,string
-    >(state => state.errors.startValueError);const errorMaxV = useSelector<AppRootStateType,string>(state => state.errors.maxValueError)
+    >(state => state.errors.startValueError);
+    const errorMaxV = useSelector<AppRootStateType,string>(state => state.errors.maxValueError)
 
 
     const isDisabled = !!(errorMaxV || errorStartV || textError);

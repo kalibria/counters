@@ -6,7 +6,7 @@ import {CounterWithSettings} from "./components/counters/CounterWithSettings";
 import {CounterWithSettings2} from "./components/counters/CounterWithSettings2";
 import {CounterWithRedux} from "./components/counters/CounterWithRedux";
 import {Provider} from "react-redux";
-import {store} from "./state/store";
+import {store} from "./store/store";
 
 
 function App() {

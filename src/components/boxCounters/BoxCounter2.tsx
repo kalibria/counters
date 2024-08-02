@@ -3,7 +3,7 @@ import {BoxCounter} from "./BoxCounter";
 import {ElWrapper} from "../additionalEllements/ElWrapper";
 import {Button} from "../button/Button";
 import { useSelector} from "react-redux";
-import {AppRootStateType} from "../../state/store";
+import {AppRootStateType} from "../../store/store";
 
 
 

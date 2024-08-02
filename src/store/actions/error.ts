@@ -16,28 +16,7 @@ export type ActionType =
     | SetMaxValueError
     | SetStartValueError
 
-export type initErrorStateType = {
-    startValueError: string,
-    maxValueError: string
-}
 
-const initErrorState = {
-    startValueError: "",
-    maxValueError: ""
-};
-
-export const ErrorReducer = (state = initErrorState, action: ActionType) => {
-    switch (action.type) {
-        case 'SET-MAX-VALUE-ERROR': {
-            return {...state, maxValueError: action.payload.error}
-        }
-        case 'SET-START-VALUE-ERROR': {
-            return {...state, startValueError: action.payload.error}
-        }
-        default:
-            return state
-    }
-}
 
 export const setMaxValueErrorAC = (error: string) => {
     return {

@@ -1,4 +1,6 @@
-import {setMaxValueAC, setStartValueAC, ValuesReducer} from "./valuesReducer";
+import {valuesReducer} from "./values";
+import {setMaxValueAC, setStartValueAC} from "../actions";
+
 
 describe("check values",()=>{
     let  initValues = {
@@ -15,7 +17,7 @@ describe("check values",()=>{
     })
 
     test("max value should be changed", () => {
-        const newValue = ValuesReducer(initValues, setMaxValueAC(8));
+        const newValue = valuesReducer(initValues, setMaxValueAC(8));
 
         expect(newValue.maxValue).toBe(8);
         expect(newValue.maxValue).not.toBe(5)
@@ -23,7 +25,7 @@ describe("check values",()=>{
     })
 
     test("start value should be changed",()=>{
-        const newValue = ValuesReducer(initValues, setStartValueAC(3))
+        const newValue = valuesReducer(initValues, setStartValueAC(3))
 
         expect(newValue.startValue).toBe(3);
         expect(newValue.startValue).not.toBe(0)
