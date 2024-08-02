@@ -6,11 +6,12 @@ type InputProps = {
     defaultValue: number
     id: string
     onInputHandler: (e: FormEvent<HTMLInputElement>) => void
-    error?: string
+    isValid?: boolean
     onBlurHandle: (e: FormEvent<HTMLInputElement>) => void
 }
 
-export const Input = ({name, defaultValue, id, onInputHandler, error, onBlurHandle}: InputProps) => {
+export const Input = ({name, defaultValue, id, onInputHandler, isValid, onBlurHandle}: InputProps) => {
+
     const inputClass = 'input';
     const errorClass = 'inputError';
 
@@ -18,7 +19,7 @@ export const Input = ({name, defaultValue, id, onInputHandler, error, onBlurHand
         <div className={'form'}>
             <label htmlFor={name}>{name}: </label>
             <input id={id} type={'number'} name={id} defaultValue={defaultValue}
-                   className={error ? `${errorClass} ${inputClass}` : inputClass} onInput={onInputHandler} onBlur={onBlurHandle}/>
+                   className={!isValid ? `${errorClass} ${inputClass}` : inputClass} onInput={onInputHandler} onBlur={onBlurHandle}/>
         </div>
     )
 }

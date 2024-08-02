@@ -1,4 +1,3 @@
-
 export type SetStartValue = {
     type: 'SET-START-VALUE',
     payload: {
@@ -28,13 +27,35 @@ export type CheckMaxValue = {
     }
 }
 
+export type CompareMaxStartValues = {
+    type: 'COMPARE-MAX-START-VALUES',
+    payload: {
+        maxValue: number,
+    }
+}
+
+export type CheckStartValue = {
+    type: 'CHECK-START-VALUE',
+    payload: {
+        startValue: number
+    }
+}
+
+export type CompareStartMaxValue = {
+    type: 'COMPARE-START-MAX-VALUES',
+    payload: {
+        startValue: number,
+    }
+}
+
 export type ActionType =
     | SetStartValue
     | SetMaxValue
     | IsValuesValid
     | CheckMaxValue
-
-
+    | CompareMaxStartValues
+    | CheckStartValue
+    | CompareStartMaxValue
 
 
 export const setStartValueAC = (newValue: number) => {
@@ -55,12 +76,56 @@ export const setMaxValueAC = (mewValue: number) => {
     } as const
 }
 
+export const checkMaxValueIsValid = (value: number) => {
+    // debugger;
+
+    return {
+        type: 'CHECK-MAX-VALUE',
+        payload: {
+            maxValue: value
+        }
+    } as const
+}
+
 export const checkIsValuesValid = (startV: number, maxV: number) => {
+    // debugger;
+
     return {
         type: 'IS-VALUES-VALID',
         payload: {
             startValue: startV,
             maxValue: maxV
+        }
+    } as const
+}
+
+export const compareMaxStartValues = (maxValue: number) => {
+    // debugger;
+
+    return {
+        type: 'COMPARE-MAX-START-VALUES',
+        payload: {
+            maxValue,
+        }
+    } as const
+}
+
+export const checkStartValueIsValid = (startValue: number) => {
+
+    return {
+        type: 'CHECK-START-VALUE',
+        payload: {
+            startValue,
+        }
+    } as const
+}
+
+export const compareStartMaxValues = (startValue: number) => {
+
+    return {
+        type: 'COMPARE-START-MAX-VALUES',
+        payload: {
+            startValue,
         }
     } as const
 }

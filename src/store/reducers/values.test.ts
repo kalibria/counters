@@ -6,13 +6,17 @@ describe("check values",()=>{
     let  initValues = {
         startValue: 0,
         maxValue: 5,
-        valuesIsValid: true
+        valuesIsValid: true,
+        maxValueIsValid: true,
+        startValueIsValid: true
     };
     beforeEach(() => {
         initValues = {
             startValue: 0,
             maxValue: 5,
-            valuesIsValid: true
+            valuesIsValid: true,
+            maxValueIsValid: true,
+            startValueIsValid: true
         };
     })
 

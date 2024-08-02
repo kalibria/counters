@@ -13,10 +13,10 @@ function App() {
     return (
         <Provider store={store}>
             <div className="App">
-                {/*<div className={'wrapper'}>*/}
-                {/*    <Counter/>*/}
-                {/*    <ProgressCounter/>*/}
-                {/*</div>*/}
+                <div className={'wrapper'}>
+                    <Counter/>
+                    <ProgressCounter/>
+                </div>
                 {/*<CounterWithSettings/>*/}
                 {/*<CounterWithSettings2/>*/}
 

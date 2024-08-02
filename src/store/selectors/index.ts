@@ -1,2 +1,1 @@
-export {selectStartValue, selectMaxValue} from './selectValues';
-export {selectErrorStartV, selectErrorMaxV} from './selectErrors'
+export {selectStartValue, selectMaxValue, selectMaxValueIsValid, selectValuesIsValid, selectStartValueIsValid} from './selectValues';

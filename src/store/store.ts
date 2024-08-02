@@ -1,15 +1,22 @@
-import {combineReducers, legacy_createStore} from 'redux';
-import {errorReducer, valuesReducer} from "./reducers";
+ import {combineReducers, compose, legacy_createStore, Store} from "redux";
+import {valuesReducer} from "./reducers";
 
+declare global {
+    interface Window {
+        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    }
+}
 
-const rootReducer = combineReducers({
-     values: valuesReducer,
-     errors: errorReducer
-})
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export const store = legacy_createStore(rootReducer)
+const rootReducers = combineReducers({
+    values: valuesReducer,
 
-export type AppRootStateType = ReturnType<typeof rootReducer>
+});
 
-// @ts-ignore
-window.store = store
+export const store:Store<AppRootStateType> = legacy_createStore(rootReducers, composeEnhancers());
+
+export type AppRootStateType = ReturnType<typeof rootReducers>
+
+//@ts-ignore
+window.store = store;

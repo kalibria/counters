@@ -1,2 +1,1 @@
-export {setStartValueAC, setMaxValueAC, checkIsValuesValid} from "./values";
-export {setMaxValueErrorAC, setStartValueErrorAC, } from './error'
+export {setStartValueAC, setMaxValueAC, checkIsValuesValid, checkMaxValueIsValid, compareMaxStartValues, checkStartValueIsValid, compareStartMaxValues} from "./values";
